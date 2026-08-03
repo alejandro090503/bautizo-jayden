@@ -105,10 +105,10 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 .hdc-bl{bottom:0;left:0;transform:scaleY(-1)}
 .hdc-br{bottom:0;right:0;transform:scale(-1)}
 .hero-content{position:relative;z-index:2;text-align:center;padding:0 28px}
-.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:8px;text-transform:uppercase;display:block;margin-bottom:16px}
-.hero-name{font-family:'Great Vibes',cursive;font-size:clamp(56px,18vw,80px);line-height:1;display:block;filter:drop-shadow(0 2px 12px rgba(0,0,0,.3))}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#FFFFFF;display:block;margin:.15em 0;text-shadow:0 1px 8px rgba(0,0,0,.4)}
-.hero-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:7px;color:#FFFFFF;margin-top:18px;display:block;text-shadow:0 1px 8px rgba(0,0,0,.55),0 0 24px rgba(0,0,0,.35)}
+.hero-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:8px;text-transform:uppercase;display:block;margin-bottom:16px;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+.hero-name{font-family:'Great Vibes',cursive;font-size:clamp(62px,20vw,88px);line-height:1;display:block;filter:drop-shadow(0 3px 16px rgba(0,0,0,.45))}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:#FFFFFF;display:block;margin:.2em 0;text-shadow:0 2px 12px rgba(0,0,0,.6),0 0 30px rgba(0,0,0,.3);font-weight:400}
+.hero-date{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;letter-spacing:7px;color:#FFFFFF;margin-top:20px;display:block;text-shadow:0 2px 12px rgba(0,0,0,.65),0 0 30px rgba(0,0,0,.4)}
 
 #fecha{padding:40px 28px;background:var(--dark);text-align:center;
   -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 14%,#000 86%,transparent 100%);
@@ -223,8 +223,8 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 /* ── GALERÍA CON CIGÜEÑA ── */
 #galeria{padding:80px 0 100px;background:var(--bg);text-align:center;overflow:hidden}
 #galeria .eyebrow,#galeria .script-title,#galeria .section-sub{padding:0 28px}
-.stork-stage{position:relative;min-height:120px;margin-bottom:20px}
-.stork-svg{position:absolute;top:0;left:-120px;width:120px;opacity:0;z-index:5}
+.stork-stage{position:relative;min-height:180px;margin-bottom:20px;overflow:hidden}
+.stork-img{position:absolute;top:10px;left:-220px;width:200px;opacity:0;z-index:5;pointer-events:none}
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 22px;margin-top:0}
 .photo-card{position:relative;background:var(--card);border-radius:4px;padding:6px 6px 30px;box-shadow:0 8px 30px rgba(11,110,138,.12);opacity:0;will-change:transform,opacity;cursor:pointer;transition:box-shadow .3s,transform .35s}
 .photo-card.big{grid-column:1/-1}
@@ -633,29 +633,7 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 
     <!-- Cigüeña animada -->
     <div class="stork-stage" id="storkStage">
-      <svg class="stork-svg" id="storkSvg" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="storkGroup">
-          <!-- Cuerpo -->
-          <ellipse cx="55" cy="35" rx="22" ry="14" fill="#f5f0e8" stroke="var(--gold)" stroke-width="1"/>
-          <!-- Ala -->
-          <path d="M40 30 Q25 18 30 38 Q35 42 45 35Z" fill="#e8ddd0" stroke="var(--gold)" stroke-width=".8"/>
-          <!-- Cuello -->
-          <path d="M72 32 Q78 20 74 12" stroke="#f5f0e8" stroke-width="6" stroke-linecap="round" fill="none"/>
-          <path d="M72 32 Q78 20 74 12" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" fill="none"/>
-          <!-- Cabeza -->
-          <circle cx="74" cy="10" r="6" fill="#f5f0e8" stroke="var(--gold)" stroke-width="1"/>
-          <!-- Ojo -->
-          <circle cx="76" cy="9" r="1.2" fill="var(--dark)"/>
-          <!-- Pico -->
-          <path d="M80 9 L92 11 L80 13Z" fill="var(--gold)" stroke="var(--gold-deep)" stroke-width=".5"/>
-          <!-- Patas -->
-          <line x1="48" y1="48" x2="46" y2="68" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="58" y1="48" x2="60" y2="68" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"/>
-          <!-- Bolsa de bebé colgando del pico -->
-          <path d="M86 13 Q82 26 90 26 Q96 26 92 13" stroke="var(--accent)" stroke-width="1.2" fill="rgba(29,172,219,.15)"/>
-          <circle cx="89" cy="22" r="3" fill="rgba(29,172,219,.2)" stroke="var(--accent)" stroke-width=".8"/>
-        </g>
-      </svg>
+      <img class="stork-img" id="storkImg" src="stork.png" alt="Cigüeña" aria-hidden="true">
     </div>
 
     <div class="photo-grid" id="photoGrid">
@@ -1013,7 +991,7 @@ function initAll(){
 
   /* ── GALERÍA: Cigüeña vuela + fotos caen ── */
   (function(){
-    var stork=document.getElementById('storkSvg');
+    var stork=document.getElementById('storkImg');
     var photos=[
       {el:document.getElementById('photoC1'),rot:-3},
       {el:document.getElementById('photoC2'),rot:2},
@@ -1023,13 +1001,13 @@ function initAll(){
     var stageW=stage?stage.offsetWidth:400;
 
     ScrollTrigger.create({
-      trigger:'#galeria',start:'top 75%',once:true,
+      trigger:'#storkStage',start:'top 65%',once:true,
       onEnter:function(){
         var tl=gsap.timeline();
-        tl.fromTo(stork,{x:-120,y:20,opacity:0,rotation:-5},{x:stageW+40,y:-10,opacity:1,rotation:5,duration:2.2,ease:'power1.inOut',
+        tl.fromTo(stork,{x:-220,y:10,opacity:0,rotation:-3},{x:stageW+60,y:-20,opacity:1,rotation:3,duration:2.8,ease:'power1.inOut',
           onStart:function(){stork.style.opacity='1';}
         });
-        tl.to(stork,{opacity:0,duration:.3},'-=.3');
+        tl.to(stork,{opacity:0,duration:.4},'-=.4');
 
         photos.forEach(function(p,i){
           gsap.set(p.el,{y:-160,rotation:p.rot+(i%2===0?20:-15),opacity:0});
